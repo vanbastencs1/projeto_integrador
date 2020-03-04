@@ -1,9 +1,12 @@
 <?php
     if(isset($_POST["btn-registro"]) == true){ 
         $nome = $_POST["nome"];
-        $login = $_POST["login"];
+        $sobrenome = $_POST["sobrenome"];
+		$login = $_POST["login"];
         $email = $_POST["email"];
+        $sexo = $_POST["sexo"];
 		$senha = $_POST["senha"];
+		$confsenha = $_POST["conf_senha"];
 		
 		$servername = "localhost";
 		$username = "root";
@@ -11,21 +14,27 @@
 		$db_name = "projeto";
 
 		$conexao = mysqli_connect($servername, $username, $password, $db_name) or die (mysqli_error($conexao));
-		mysqli_select_db("projeto", $conexao) or die(mysqli_error($conexao));
 		if(mysqli_connect_error()){
    		echo "Falha na Conexão: " . mysqli_connect_error();
 		}
 
         //TRATAR COMANDOS MAL INTENCIONADO.
         $nome = mysqli_escape_string($conexao, $nome);
+        $sobrenome = mysqli_escape_string($conexao, $sobrenome);
         $login = mysqli_escape_string($conexao, $login);
         $email = mysqli_escape_string($conexao, $email);
+        $sexo = mysqli_escape_string($conexao, $sexo);
         $senha = mysqli_escape_string($conexao, $senha);
+        $confsenha = mysqli_escape_string($conexao, $confsenha);
 
-		$sql = mysqli_query($conexao, "INSERT INTO usuario(id, nome, login, email, senha) VALUES (null,'$nome','$login','$email','$senha')") or die(mysqli_error($conexao));
+		$sql = mysqli_query($conexao, "INSERT INTO usuario(id, nome, sobrenome, login, email, sexo, senha, conf_senha) VALUES (null,'$nome','$sobrenome','$login','$email','$sexo','$senha','$confsenha')") or die(mysqli_error($conexao));
 
-        //EXECUTA A QUERY NO BANCO DE DADOS.
-        $q = mysqli_query($conexao, $sql) or die (mysqli_error($conexao));
+		if(mysqli_affected_rows($conexao) > 0) 
+		{
+			$id = mysqli_insert_id($conexao);
+		}
+
+		header("location:login.php");
 
         //FECHAR CONEXÃO MYSQL
         mysqli_close($conexao);
@@ -53,7 +62,7 @@
 				<div class="image-holder">
 					<img src="images/registration-form-1.jpg" alt="">
 				</div>
-				<form method="POST" action="login.php">
+				<form method="POST" action="#">
 					<h3>Formulário de Registro</h3>
 					<div class="form-group">
 						<input type="text" name="nome" placeholder="Nome" class="form-control" required>
