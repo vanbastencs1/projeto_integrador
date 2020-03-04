@@ -7,6 +7,7 @@
     <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <title>Olá, mundo!</title>
+    <link rel="stylesheet" href="css/estilo.css">
   </head>
   <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -32,7 +33,7 @@
             </form>
           </div>
         </nav>
-  <div class="wrapper container" style="background-image: url('images/bg-img2.jpg');">
+  <div class="wrapper container">
 			<div class="inner">
 				<div class="image-holder">				
 				</div>
@@ -175,8 +176,8 @@
                 </div><!-- /.row -->
           
               </main><!-- /.container -->
-          
-              <footer class="blog-footer">
+              <br>
+              <footer>
                 <p>Template de blog construído para o <a href="https://getbootstrap.com/">Bootstrap</a>, pelo <a href="https://twitter.com/mdo">@mdo</a>.</p>
                 <p>
                   <a href="#">Voltar ao topo</a>

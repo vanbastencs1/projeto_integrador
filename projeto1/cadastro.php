@@ -1,11 +1,36 @@
 <?php
-//CONEXÃO
-require_once 'db_connect.php';
+    if(isset($_POST["btn-registro"]) == true){ 
+        $nome = $_POST["nome"];
+        $login = $_POST["login"];
+        $email = $_POST["email"];
+		$senha = $_POST["senha"];
+		
+		$servername = "localhost";
+		$username = "root";
+		$password = "";
+		$db_name = "projeto";
 
-//SESSÃO
-session_start();
+		$conexao = mysqli_connect($servername, $username, $password, $db_name) or die (mysqli_error($conexao));
+		mysqli_select_db("projeto", $conexao) or die(mysqli_error($conexao));
+		if(mysqli_connect_error()){
+   		echo "Falha na Conexão: " . mysqli_connect_error();
+		}
+
+        //TRATAR COMANDOS MAL INTENCIONADO.
+        $nome = mysqli_escape_string($conexao, $nome);
+        $login = mysqli_escape_string($conexao, $login);
+        $email = mysqli_escape_string($conexao, $email);
+        $senha = mysqli_escape_string($conexao, $senha);
+
+		$sql = mysqli_query($conexao, "INSERT INTO usuario(id, nome, login, email, senha) VALUES (null,'$nome','$login','$email','$senha')") or die(mysqli_error($conexao));
+
+        //EXECUTA A QUERY NO BANCO DE DADOS.
+        $q = mysqli_query($conexao, $sql) or die (mysqli_error($conexao));
+
+        //FECHAR CONEXÃO MYSQL
+        mysqli_close($conexao);
+    }
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 	<head>
@@ -43,11 +68,11 @@ session_start();
 						<i class="zmdi zmdi-email"></i>
 					</div>
 					<div class="form-wrapper">
-						<select name="" id="" class="form-control">
+						<select name="sexo" id="sexo" class="form-control">
 							<option value="" disabled selected>Gênero</option>
-							<option value="asculino">Masculino</option>
-							<option value="feminino">Feminino</option>
-							<option value="outro">Outro</option>
+							<option value="M">Masculino</option>
+							<option value="F">Feminino</option>
+							<option value="O">Outro</option>
 						</select>
 						<i class="zmdi zmdi-caret-down" style="font-size: 17px"></i>
 					</div>
