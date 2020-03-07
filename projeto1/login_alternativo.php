@@ -24,7 +24,7 @@ if(isset($_POST['btn-entrar'])){
             $dados = mysqli_fetch_array($resultado);
             $_SESSION['logado'] = true;
             $_SESSION['id_usuario'] = $dados['id'];
-            header('location:https://globoesporte.globo.com/');
+            header('location:index.html');
         }else{
             $erros[] = "<p>Usuário e Senha Incorretos </p>";
         }

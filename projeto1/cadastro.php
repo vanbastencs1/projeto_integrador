@@ -52,7 +52,7 @@
 		<link rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
 
 		<!-- STYLE CSS -->
-		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/stylee.css">
 	</head>
 
 	<body>
@@ -96,6 +96,10 @@
 					<button name="btn-registro">Registrar
 						<i class="zmdi zmdi-arrow-right"></i>
 					</button>
+					<br>
+					<p class="message">Já Posseuí Nosso Cadastro? <a href="login.php">Clique Aqui</a></p>
+					<br>
+					<p class="message">Quer Voltar Para o Inicio? <a href="index.html">Clique Aqui</a></p>
 				</form>
 			</div>
 		</div>
